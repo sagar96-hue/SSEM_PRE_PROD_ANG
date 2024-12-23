@@ -1,0 +1,425 @@
+<div class="d-flex flex-column flex-shrink-0 main-menu lg_font_label" [ngClass]="menu !== true ? 'show-menu' : 'hide-menu'">
+  <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto  text-decoration-none logo-image">
+    <span class="fs-4">
+      <a href="http://10.101.0.90:1696/Pages/UserHomePage.aspx" class="logo-light" >
+        <img src="../../assets/images/brands/LG_logo.png" alt="logo" class="logo-lg" height="50">
+      </a>
+    </span>
+  </a>
+  <ul class="nav nav-pills flex-column mb-auto sidebar-nav">
+    <!-- <li class="nav-item ">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" aria-current="page" 
+        data-bs-target="#adminstration-nav" data-bs-toggle="collapse" (click)="toggleNavbar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 36 36"><circle cx="14.67" cy="8.3" r="6" fill="#A50032" class="clr-i-solid clr-i-solid-path-1"/><path fill="#A50032" d="M16.44 31.82a2.15 2.15 0 0 1-.38-2.55l.53-1l-1.09-.33a2.14 2.14 0 0 1-1.5-2.1v-2.05a2.16 2.16 0 0 1 1.53-2.07l1.09-.33l-.52-1a2.17 2.17 0 0 1 .35-2.52a19 19 0 0 0-2.32-.16A15.58 15.58 0 0 0 2 23.07v7.75a1 1 0 0 0 1 1z" class="clr-i-solid clr-i-solid-path-2"/><path fill="#A50032" d="m33.7 23.46l-2-.6a6.7 6.7 0 0 0-.58-1.42l1-1.86a.35.35 0 0 0-.07-.43l-1.45-1.46a.38.38 0 0 0-.43-.07l-1.85 1a7.7 7.7 0 0 0-1.43-.6l-.61-2a.38.38 0 0 0-.36-.25h-2.08a.38.38 0 0 0-.35.26l-.6 2a7 7 0 0 0-1.45.61l-1.81-1a.38.38 0 0 0-.44.06l-1.47 1.44a.37.37 0 0 0-.07.44l1 1.82a7.2 7.2 0 0 0-.65 1.43l-2 .61a.36.36 0 0 0-.26.35v2.05a.36.36 0 0 0 .26.35l2 .61a7.3 7.3 0 0 0 .6 1.41l-1 1.9a.37.37 0 0 0 .07.44L19.16 32a.38.38 0 0 0 .44.06l1.87-1a7 7 0 0 0 1.4.57l.6 2.05a.38.38 0 0 0 .36.26h2.05a.38.38 0 0 0 .35-.26l.6-2.05a6.7 6.7 0 0 0 1.38-.57l1.89 1a.38.38 0 0 0 .44-.06L32 30.55a.38.38 0 0 0 .06-.44l-1-1.88a7 7 0 0 0 .57-1.38l2-.61a.39.39 0 0 0 .27-.35v-2.07a.4.4 0 0 0-.2-.36m-8.83 4.72a3.34 3.34 0 1 1 3.33-3.34a3.34 3.34 0 0 1-3.33 3.34" class="clr-i-solid clr-i-solid-path-3"/><path fill="none" d="M0 0h36v36H0z"/></svg>
+        <span class="link-name"> Administration </span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon"  alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="adminstration-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" >
+        <li>
+          <a href="http://10.101.0.136:1602/Admin/UpdateASP.aspx">
+            <span>Update ASP</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/ChannelMaster.aspx">
+            <span>Channel Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/UploadFunctionality.aspx">
+            <span>Upload Function</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/HiringAndShuffling.aspx">
+            <span>Shufling Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/SBADMAutoTargetsUpload.aspx">
+            <span>Auto Target Update</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/ProfileDeploymentAssignment.aspx">
+            <span>Profile Deployment Assignment</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/MissingSaleUpload.aspx">
+            <span>Missing Sale Update</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/DSOGTMCodeMapping.aspx">
+            <span>DSO GTM Code Mapping</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/ProcessApprovalMaster.aspx">
+            <span>Process Approval Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/ModuleMaster.aspx">
+            <span>Process Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/GTMROBOCHANNELMaster.aspx">
+            <span>GTM RoboChannel Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/AdditionalProductMaster.aspx">
+            <span>Additional Product Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/GTMAccountMaster.aspx">
+            <span>GTM Account Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/DeploymentProcessRestriction.aspx">
+            <span>Deployment Count Restriction</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#approve-nav"
+        data-bs-toggle="collapse" (click)="toggleNavbar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="#A50032" d="M10.5 2a8.5 8.5 0 1 0 5.262 15.176l3.652 3.652a1 1 0 0 0 1.414-1.414l-3.652-3.652A8.5 8.5 0 0 0 10.5 2M4 10.5a6.5 6.5 0 1 1 13 0a6.5 6.5 0 0 1-13 0"/></g></svg>
+        <span class="link-name">Approve/Search </span>
+        <img src="../../assets/images/plus.svg"  class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="approve-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+    
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/DeploymentRequestSearch.aspx">
+            <span>Hiring – Deployment</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/AutoTargetSettingsSearch.aspx">
+            <span>Auto Target Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/TargetSettingsNewSSESearch.aspx">
+            <span>Target Setting (New Promoter)</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/TargetResetProcess.aspx">
+            <span>Target Reset Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/TryMeMonthlyTargetSearch.aspx">
+            <span>Try Me Target Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/CountApprovalSearch.aspx">
+            <span>Count Approval Search</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/HiringAndShuffling.aspx?Mode=H">
+            <span>Hiring – Biodata</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#sale-display-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.2em" viewBox="0 0 16 16"><path fill="#A50032" d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0m14.28 2.53l-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06L4.28 9.78a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.75.75 0 0 1 1.042.018a.75.75 0 0 1 .018 1.042"/></svg>
+        <span class="link-name">Sale & Display Reports </span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="sale-display-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/ArchiveSaleReport.aspx">
+            <span>Archive Sale Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/DisplayReport.aspx">
+            <span>Display Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SaleNotPunchRpt.aspx">
+            <span>Sale Not Punch Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/EDISaleReport.aspx">
+            <span>EDI Sales Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SaleReport.aspx">
+            <span>Sale Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/DSOVisitReport.aspx">
+            <span>DSO Visit Report</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#employee-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 36 36"><ellipse cx="18" cy="11.28" fill="#A50032" rx="4.76" ry="4.7"/><path fill="#A50032" d="M10.78 11.75h.48v-.43a6.7 6.7 0 0 1 3.75-6a4.62 4.62 0 1 0-4.21 6.46Zm13.98-.47v.43h.48A4.58 4.58 0 1 0 21 5.29a6.7 6.7 0 0 1 3.76 5.99m-2.47 5.17a21.5 21.5 0 0 1 5.71 2a2.7 2.7 0 0 1 .68.53H34v-3.42a.72.72 0 0 0-.38-.64a18 18 0 0 0-8.4-2.05h-.66a6.66 6.66 0 0 1-2.27 3.58M6.53 20.92A2.76 2.76 0 0 1 8 18.47a21.5 21.5 0 0 1 5.71-2a6.66 6.66 0 0 1-2.27-3.55h-.66a18 18 0 0 0-8.4 2.05a.72.72 0 0 0-.38.64V22h4.53Zm14.93 5.77h5.96v1.4h-5.96z"/><path fill="#A50032" d="M32.81 21.26h-6.87v-1a1 1 0 0 0-2 0v1H22v-2.83a20 20 0 0 0-4-.43a19.3 19.3 0 0 0-9.06 2.22a.76.76 0 0 0-.41.68v5.61h7.11v6.09a1 1 0 0 0 1 1h16.17a1 1 0 0 0 1-1V22.26a1 1 0 0 0-1-1m-1 10.36H17.64v-8.36h6.3v.91a1 1 0 0 0 2 0v-.91h5.87Z"/></svg>
+        <span class="link-name">Employee Reports</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="employee-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/CurrentEmpReport.aspx">
+            <span>Current Employee Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/AttendanceReport.aspx">
+            <span>Attendance</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/AttritionRpt.aspx">
+            <span>Attrition Reason</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/AdherenceReport.aspx">
+            <span>Adherence Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SelfieAttendance.aspx">
+            <span>Selfie Attendance Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/EmpResignationReport.aspx">
+            <span>Employee Resignation Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/NewJoineeReport.aspx">
+            <span>New Joinee Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/ResourceShufflingReport.aspx">
+            <span>Employee Shuffling History Report</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#target-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path fill="#A50032" d="M9.5 5h3.25L9 1.25V4.5a.5.5 0 0 0 .5.5m0 1A1.5 1.5 0 0 1 8 4.5V1H4.5A1.5 1.5 0 0 0 3 2.5v4.777l.008-.004l.01-.004c.048-.312.193-.6.419-.827A1.5 1.5 0 0 1 4.5 6.001c.399 0 .776.155 1.059.438c.229.228.375.517.423.831a4.5 4.5 0 0 1 1.689 1.061a4.5 4.5 0 0 1 1.06 1.688c.312.048.6.193.828.42c.284.283.441.66.441 1.062c0 .399-.155.775-.437 1.059a1.5 1.5 0 0 1-.832.424a4.5 4.5 0 0 1-1.061 1.688a2.4 2.4 0 0 1-.281.23q-.068.048-.133.099h4.243a1.5 1.5 0 0 0 1.5-1.5V6zm-4.293 4.793a1 1 0 0 0-1.09-.217a.998.998 0 0 0-.324 1.631a1 1 0 0 0 1.263.125a1 1 0 0 0 .425-1.027a1 1 0 0 0-.274-.512M8.5 11a.5.5 0 1 1 0 1h-.551A3.49 3.49 0 0 1 5 14.949v.551a.5.5 0 1 1-1 0v-.551A3.49 3.49 0 0 1 1.051 12H.5a.5.5 0 1 1 0-1h.551A3.49 3.49 0 0 1 4 8.051V7.5a.5.5 0 1 1 1 0v.551A3.49 3.49 0 0 1 7.949 11zm-2.232 2.268a2.5 2.5 0 0 0 .542-.811a2.51 2.51 0 0 0-.379-2.543a2.5 2.5 0 0 0-3.111-.618a2.5 2.5 0 0 0-.209 4.283a2.5 2.5 0 0 0 3.157-.311"/></svg>
+        <span class="link-name">Target Reports</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="target-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SSETargetRpt.aspx">
+            <span>Promoter Target Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/DSOTGTSettingRpt.aspx">
+            <span>DSO Target Setting</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/DailyTGTvsACH.aspx">
+            <span>Promoter Daily Tgt. Vs ACH</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#training-report-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><path fill="#A50032" d="M10.386 9.836a2.5 2.5 0 1 1 3.611.667C15.212 11.173 16 12.46 16 14v1.5a.5.5 0 1 1-1 0V14c0-1.724-1.276-3-3-3c-.91 0-1.298-.02-1.805-.122c-1.25-.254-2.333-1-3.585-2.566a.5.5 0 1 1 .78-.624c.9 1.124 1.653 1.74 2.434 2.043c.155.052.345.083.562.105m1.785.128q.125.015.251.034L12.5 10a1.5 1.5 0 1 0-.33-.036M9.78 11.97a.5.5 0 0 1 .5.5a1 1 0 0 1-.05.231c-.179.38-.23.774-.23 1.302v1.5a.5.5 0 1 1-1 0v-1.5c0-.657.072-1.186.307-1.696a.5.5 0 0 1 .473-.337M5.958 5.772a.5.5 0 0 1-.78.625L3.11 3.812a.5.5 0 1 1 .78-.624zM1 11h5.5a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5V.5A.5.5 0 0 1 .5 0h12a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0V1H1z"/></svg>
+        <span class="link-name">Training Report</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="training-report-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <!-- <li>
+          <a href="http://10.101.0.136:1602/Reports/TrainingReport.aspx">
+            <span>Training Report</span>
+          </a>
+        </li> -->
+        <li *ngIf="roleName == 'TRAINEE'" >
+          <a href="http://10.101.0.90:1696/MasterData/KnowledgeAssessment.aspx" target="_blank">
+            <span>Training Delivery Data Upload</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span routerLink="/training-delivery-report">Training Delivery Report</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span routerLink="/sse-training-report">SSE Training Report</span>
+          </a>
+        </li>
+        
+        <!-- <li>
+          <a href="http://10.101.0.136:1602/Reports/EmployeeAssessmentReport.aspx">
+            <span>Assessment Reports</span>
+          </a>
+        </li> -->
+        <!-- <li>
+          <a href="http://10.101.0.136:1602/Reports/BestPracticeReport.aspx">
+            <span>Best Practice Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SPMSUsageRpt.aspx">
+            <span>SPMS Usage Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/SurveyDashboard.aspx">
+            <span>Customer Survey Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/CustomerSurveyReport.aspx">
+            <span>Customer Survey Report</span>
+          </a>
+        </li> -->
+        
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#other-report-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="#A50032" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2"/></svg>
+        <span class="link-name">Training Plan</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="other-report-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <!-- <li>
+          <a href="http://10.101.0.136:1602/Reports/MiscellaneousReports.aspx">
+            <span>Miscellaneous Reports</span>
+          </a>
+        </li> -->
+        <li>
+          <a>
+            <span routerLink="/pre-journey-plan">PJP (Pre-Journey Plan)</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span routerLink="/ajp-pjp-report">AJP (Actual Journey Plan)</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#incentive-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="#A50032" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 19.5c0-1.178 0-1.768.44-2.134C2.878 17 3.585 17 5 17s2.121 0 2.56.366s.44.956.44 2.134s0 1.768-.44 2.134C7.122 22 6.415 22 5 22s-2.121 0-2.56-.366S2 20.678 2 19.5m14 0c0-1.178 0-1.768.44-2.134C16.878 17 17.585 17 19 17s2.121 0 2.56.366s.44.956.44 2.134s0 1.768-.44 2.134C21.122 22 20.415 22 19 22s-2.121 0-2.56-.366S16 20.678 16 19.5m3-2.5c0-2.482-.744-3-4.308-3H9.308C5.744 14 5 14.518 5 17m7-10.5L13 5m3.5 1.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0" color="#A50032"/></svg>
+        <span class="link-name">Incentive Management</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="incentive-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/Reports/IncentiveReport.aspx">
+            <span>Incentive Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/IncentiveMasters.aspx">
+            <span>Incentive Masters</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#mobile-application-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 32 32"><path fill="#A50032" d="M23 7h4v4h-4zm0 6h4v4h-4zm-6-6h4v4h-4zm0 6h4v4h-4z"/><circle cx="14.5" cy="24.5" r="1.5" fill="#A50032"/><path fill="#A50032" d="M21 30H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h13v2H8v24h13v-8h2v8a2 2 0 0 1-2 2"/></svg>
+        <span class="link-name">Mobile Application</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="mobile-application-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/MobileProductModel.aspx">
+            <span>Create Model</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/Competitors.aspx">
+            <span>Competitor/Product</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/MyCare.aspx">
+            <span>My Care & Grooming Idea</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/MobileModelTracking.aspx">
+            <span>Model Tracking</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MobileApplication/ModelPriceMaster.aspx">
+            <span>Model Price Master</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/MasterData/IncentiveGrades.aspx">
+            <span>Incentive Grade</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/BusinessFunction/ProductTargetGradeMapping.aspx">
+            <span>Product & Target Grade Mapping</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link  d-flex align-items-center collapsed" (click)="toggleNavbar()" data-bs-target="#sms-nav"
+        data-bs-toggle="collapse">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="#A50032" d="M8 11q.425 0 .713-.288T9 10t-.288-.712T8 9t-.712.288T7 10t.288.713T8 11m4 0q.425 0 .713-.288T13 10t-.288-.712T12 9t-.712.288T11 10t.288.713T12 11m4 0q.425 0 .713-.288T17 10t-.288-.712T16 9t-.712.288T15 10t.288.713T16 11M2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z"/></svg>
+        <span class="link-name">SMS</span>
+        <img src="../../assets/images/plus.svg" class="ms-auto toggle-icon" alt="Administration Icon" width="20" height="20">
+      </a>
+      <ul id="sms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="http://10.101.0.136:1602/SMS/SendSMS.aspx">
+            <span>Send SMS</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://10.101.0.136:1602/SMS/SMSTemplateMaster.aspx">
+            <span>SMS Template Master</span>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+    <li class="nav-item">
+      <a (click)="logout()"  class="nav-link  d-flex align-items-center">
+        <img src="../../assets/images/logout.svg" class="me-2" alt="Logout Icon" width="20" height="20">
+        <span class="link-name">Logout</span>
+      </a>
+    </li>
+  </ul>
+</div> 

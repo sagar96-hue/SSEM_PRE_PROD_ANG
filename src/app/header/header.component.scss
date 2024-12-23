@@ -1,0 +1,181 @@
+.custom-hr {
+    border: 0;
+    border-top: 2px solid #d9534f;
+    margin: 0; /* Adjust the margin as needed */
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 17px;
+}
+
+cont-2 {
+    background: #f1f1f1 !important;
+}
+
+body {
+    background: white;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 55px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 20px;
+}
+
+    .form-group:last-child {
+        margin-right: 0;
+    }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+input[type="text"], .select2-container--default .select2-selection--single {
+    width: 50%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.select2-container--default .select2-results__option {
+    display: flex;
+    align-items: center;
+}
+
+    .select2-container--default .select2-results__option span {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .select2-container--default .select2-results__option input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+.select2 {
+    width: 100%;
+}
+
+.main-menu {
+    background: white
+}
+
+.menu-title {
+    color: black;
+}
+
+.menu-item .menu-link .menu-text {
+    color: black;
+}
+
+/* Red background color when menu is active/open */
+.menu-item.active .menu-link .menu-title {
+    background-color: #e83030;
+}
+
+
+/* Red plus sign styling */
+.menu-plus {
+    color: #dc3545 !important; /* Red color for the plus sign */
+    /* Adjust spacing as needed */
+}
+
+.menu-plus1 {
+    color: #e83030
+}
+
+.app-menu .menu-item .menu-link > .menu-text {
+    padding: 0px !important
+}
+
+.menu-plus .app-menu .menu-item.active > .menu-link {
+    color: var(--bs-menu-item-active-color);
+    background-color: rgb(248 11 11);
+}
+
+.app-menu .menu-item.active > .menu-link {
+    color: white;
+    background-color: #e83030;
+}
+
+.menu-item.active {
+    border: 0px solid #e83030; /* Add your desired border style */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically, if needed */
+    /* Full height of the viewport, optional */
+}
+
+.btn {
+    display: block;
+    width: 18%;
+    padding: 10px;
+    background-color: #A50032 !important;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+ul.sub-menu {
+    background: #80808024;
+}
+
+.box {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-top: 7px solid #A50032; /* Add a red border on top */
+    height: 191px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    background-color: #fff; /* White background for the box */
+    padding: 0 15px;
+}
+
+.col-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.box-heading {
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: #f0f0f0; /* Grey background */
+    padding: 10px 10px;
+    text-align: center;
+}
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+     margin-bottom: 1px; 
+}
+
+.button-toggle-menu{
+    width: auto !important;
+    padding: 0;
+}
+
+
+
+
+
+/// global css

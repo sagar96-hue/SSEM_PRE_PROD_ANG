@@ -1,0 +1,35 @@
+
+      <div class="main">
+            
+            <form>
+                  <label for="first">
+                        Username:
+                  </label>
+                  <input type="text" 
+                         id="first" 
+                         name="first" [(ngModel)]="userName"
+                         placeholder="Enter your Username" required>
+
+                  <label for="password">
+                        Password:
+                  </label>
+                  <input type="password"
+                         id="password" 
+                         name="password" [(ngModel)]="password"
+                         placeholder="Enter your Password" required>
+
+                  <div class="wrap">
+                        <button type="submit"
+                                onclick="solve()">
+                              Submit
+                        </button>
+                  </div>
+            </form>
+            <p>
+                  <a routerLink="/forgot-password"
+                     style="text-decoration: none;">
+                        Forgot password
+                  </a>
+            </p>
+      </div>
+

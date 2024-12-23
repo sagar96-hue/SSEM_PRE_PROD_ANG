@@ -1,0 +1,227 @@
+<div class="loader" *ngIf="isLoader">
+  <img src="../../assets/images/LG_loader.gif">
+</div>
+<div class="px-3">
+
+  <!-- <div class="row lg_font">
+    <div class="col-12 d-flex gap-2 training_tab mb-3  mt-3">
+      <button routerLink="/training-delivery-report" class="btn btn-danger custom-btn">
+        Training Delivery Report
+      </button>
+      <button routerLink="/sse-training-report" class="btn btn-danger custom-btn">
+        SSE Training Report
+      </button>
+      <button  *ngIf="roleName == 'TRAINEE'" routerLink="/training-delivery-upload" style="width: 22%;" class="btn btn-danger custom-btn">
+        Training Delivery Data Upload
+   </button>
+
+    </div>
+  </div> -->
+  <hr class="custom-hr" />
+
+
+  <div class="row justify-content-between mt-3 align-items-center ">
+    <!-- <h1 class="mt-2 mb-2 col-12 h2 font-bold"> Training Delivery Report </h1>
+    <p class="mb-5" style="color: #A50032;">All Fields are mandatory*</p> -->
+    <h1 class="lg_font"> Training Delivery Report </h1>
+    <p class="lg_font" style="color: #A50032;">All Fields are mandatory*</p>
+
+    <!-- <form> -->
+    <!-- start page title -->
+    <div class="col-4">
+      <div class="box mb-0">
+        <div class="box-heading">Select Training Date</div>
+        <div class="form-row align-items-start py-3 mb-0 mx-0 px-1">
+          <div class="form-group col-6 mx-0 px-1">
+            <label for="toDate" class="mb-0 lg_font_label">From Date</label>
+            <!-- <input type="date" id="toDate" [(ngModel)]="fromDate" class="form-control" placeholder="To Date" /> -->
+            <div class="input-group input_date_cstm ">
+              <input class="form-control lg_font_label" placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                [maxDate]="currentDate" [value]="searchModel.fromDate" (input)="fromDateChange($event)" ngbDatepicker
+                #fromDate="ngbDatepicker" (dateSelect)="fromDateSelect($event)" />
+              <button (click)="fromDate.toggle()" type="button"
+                style="border: none;background-color: transparent;padding: 0;">
+                <img src="../../assets/images/callendar_icon.svg" alt="">
+              </button>
+            </div>
+            <ng-template class="lg_font_label" #dayTemplate let-date="date" let-currentMonth="currentMonth">
+              <span [ngClass]="getDayClass(date)">
+                {{ date.day }}
+              </span>
+            </ng-template>
+            <label
+              *ngIf="isSubmitted && (searchModel.fromDate == null ||searchModel.fromDate == '' ) && isFromDateValid"
+              class="error lg_font_label">Required</label>
+            <label *ngIf="isSubmitted && !isFromDateValid" class="error">Select a valid date</label>
+            <!-- <label *ngIf="isSubmitted && fromDate == undefined" style="color: red">Required</label> -->
+          </div>
+          <div class="form-group col-6 mx-0 px-1">
+            <label for="fromDate" class="mb-0 lg_font_label">To Date</label>
+            <!-- <input type="date" id="fromDate" [(ngModel)]="toDate" class="form-control" placeholder="From Date" /> -->
+            <div class="input-group input_date_cstm">
+              <input class="form-control lg_font_label" placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                [minDate]=minDate [value]="searchModel.toDate" (input)="toDateChange($event)" ngbDatepicker
+                #toDate="ngbDatepicker" [maxDate]="currentDate" (dateSelect)="toDateSelect($event)" />
+              <button (click)="toDate.toggle()" type="button"
+                style="border: none;background-color: transparent;padding: 0;">
+                <img src="../../assets/images/callendar_icon.svg" alt="">
+
+              </button>
+            </div>
+            <ng-template #dayTemplate let-date="date" let-currentMonth="currentMonth">
+              <span [ngClass]="getDayClass(date)">
+                {{ date.day }}
+              </span>
+            </ng-template>
+            <label *ngIf="isSubmitted && (searchModel.toDate == null ||searchModel.toDate == '' ) && isToDateValid"
+              class="error lg_font_label">Required</label>
+            <label *ngIf="isSubmitted && ! isToDateValid" class="error">Select a valid date</label>
+            <!-- <label *ngIf="isSubmitted && toDate == undefined" style="color: red">Required</label> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Start Content-->
+  <div class="">
+
+    <br />
+    <div class="mt-3">
+      <div class="row">
+        <div class="col-4">
+          <div class="box">
+            <div class="box-heading">Branch</div>
+            <div class="form-group">
+              <ng-select class="lg_font_label" [(ngModel)]="selectedBranch" [multiple]="true" (change)="branchChange(selectedBranch)">
+                <ng-option [value]="0">All Branches</ng-option>
+                <ng-option *ngFor="let item of branches" [value]="item.BRANCHID">{{ item.BRANCHCODE }}</ng-option>
+              </ng-select>
+              <label *ngIf="isSubmitted && (selectedBranch == undefined || selectedBranch?.length==0)"
+                class="lg_font_label" style="color: red">Required</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="box">
+            <div class="box-heading">Profile</div>
+            <div class="form-group">
+              <ng-select [(ngModel)]="selectedProfile" class="lg_font_label" [multiple]="true" (change)="profileChange(selectedProfile)">
+                <ng-option [value]="0">All Profiles</ng-option>
+                <ng-option *ngFor="let item of profiles" [value]="item.PROFILENAME">{{ item.PROFILENAME }}</ng-option>
+              </ng-select>
+              <label *ngIf="isSubmitted && (selectedProfile == undefined || selectedProfile?.length==0)"
+                class="lg_font_label" style="color: red">Required</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="box">
+            <div class="box-heading">Training Code</div>
+            <div class="form-group">
+              <ng-select [(ngModel)]="selectedTrainingCode" [multiple]="true" class="lg_font_label"
+                (change)="trainingCodeChange(selectedTrainingCode)">
+                <ng-option [value]="0">All Training Codes</ng-option>
+                <ng-option *ngFor="let item of trainingCodes" [value]="item.TRAINING_CODE">{{ item.TRAINING_CODE
+                  }}</ng-option>
+              </ng-select>
+              <label *ngIf="
+                          isSubmitted &&
+                          (selectedTrainingCode == undefined ||
+                            selectedTrainingCode?.length == 0)
+                        " class="lg_font_label" style="color: red">Required</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-10"></div>
+        <div class="col-2">
+          <button type="button" (click)="search()" style="width: 100% !important" class="btn lg_font_label">
+            Download Report
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- end page title -->
+    <!-- end Row -->
+  </div>
+  <!-- container -->
+</div>
+<!-- content -->
+<!-- Footer Start -->
+<!-- <footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          © Dashtrap
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-none d-md-flex gap-4 align-items-center justify-content-md-end">
+          <p class="mb-0">
+            Design & Develop by
+            <a href="https://myrathemes.com/" target="_blank">Zouma</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+
+
+
+<button class="btn btn-primary py-2 w-auto" style="display: none;" data-target="#alertBoxModel" data-bs-toggle="modal"
+  data-bs-target="#alertBoxModel" #alert>
+</button>
+<div class="modal fade" id="alertBoxModel" tabindex="-1" aria-labelledby="alertBoxModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="modal-content">
+
+          <div class="modal-body">
+
+            <div class="container-fluid">
+              <div class="row">
+                <h5 id="alertBoxModelLabel">{{alertMessage}}</h5>
+
+
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="container">
+              <div class="row mx-auto" style="max-width: 250px;">
+                <!-- <div class="col-6 px-1">
+                                    <button type="button" (click)="deletePJPEvent(toBeDeletedId)"
+                                        class="btn btn-danger">Yes</button>
+
+                                </div> -->
+                <div class="col-6 px-1"> <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal"
+                    aria-label="Close">Ok</button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

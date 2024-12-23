@@ -1,0 +1,7 @@
+<div class="layout-wrapper">
+    <app-sidebar [menu]="isMenu"></app-sidebar>
+    <div class="page-content"  [ngStyle]="{ 'margin-left': isMenu ? '142px' : '280px' }">
+        <app-header (menu)="toggleMenuAction($event)"></app-header>
+        <router-outlet></router-outlet>
+    </div>
+</div>

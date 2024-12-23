@@ -1,0 +1,356 @@
+.custom-hr {
+    border: 0;
+    border-top: 2px solid #a50032;
+    margin: 0; /* Adjust the margin as needed */
+  }
+  tr th {
+    background-color: #a50032;
+    color: white;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 17px;
+  }
+  
+  cont-2 {
+    background: #f1f1f1 !important;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .container-fluid {
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 55px;
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .form-group:last-child {
+    margin-right: 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  input[type="text"],
+  .select2-container--default .select2-selection--single {
+    /*  width: 50%;
+      padding: 8px;
+      margin-bottom: 10px;*/
+  }
+  
+  .select2-container--default .select2-results__option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .select2-container--default .select2-results__option span {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  
+  .select2-container--default .select2-results__option input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  .select2 {
+    width: 100%;
+  }
+  
+  .main-menu {
+    background: white;
+  }
+  
+  .menu-title {
+    color: black;
+  }
+  
+  .menu-item .menu-link .menu-text {
+    color: black;
+  }
+  
+  /* Red background color when menu is active/open */
+  .menu-item.active .menu-link .menu-title {
+    background-color: #e83030;
+  }
+  
+  /* Red plus sign styling */
+  .menu-plus {
+    color: #dc3545 !important; /* Red color for the plus sign */
+    /* Adjust spacing as needed */
+  }
+  
+  .menu-plus1 {
+    color: #e83030;
+  }
+  
+  .app-menu .menu-item .menu-link > .menu-text {
+    padding: 0px !important;
+  }
+  
+  .menu-plus .app-menu .menu-item.active > .menu-link {
+    color: var(--bs-menu-item-active-color);
+    background-color: rgb(248 11 11);
+  }
+  
+  .app-menu .menu-item.active > .menu-link {
+    color: white;
+    background-color: #e83030;
+  }
+  
+  .menu-item.active {
+    border: 0px solid #e83030; /* Add your desired border style */
+    border-radius: 4px; /* Optional: rounded corners */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically, if needed */
+    /* Full height of the viewport, optional */
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #a50032 !important;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  ul.sub-menu {
+    background: #80808024;
+  }
+  
+  .box {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-top: 7px solid #a50032; /* Add a red border on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    background-color: #fff; /* White background for the box */
+color: white;
+}
+  
+  .col-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .box-heading {
+    font-weight: bold;
+    /*margin-bottom: 10px;*/
+    background-color: #a50032; /* Grey background */
+    padding: 5px 10px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+    font-size: 16px;
+    th{
+      color:white
+    }
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1px;
+  }
+  
+  /*.form-group:last-child {
+      margin-right: 20px;
+  }*/
+  
+  input[type="text"],
+  .select2-container--default .select2-selection--single {
+    width: 100%;
+    /*padding: 8px;
+      margin-bottom: 10px;
+      margin-left: 8px;*/
+  }
+  
+  /* .btn-block {
+      width: 100%;
+  }*/
+  
+  .add-btn {
+    color: red;
+    background-color: white; /* Optional: Ensure background is not red */
+    border-color: red; /* Optional: Ensure border color is red to match text */
+  }
+  
+  .add-btn:hover {
+    background-color: white; /* Optional: Maintain background color on hover */
+  }
+  
+  .modal-dialog {
+    max-width: 80% !important; /* Change this value to increase/decrease the modal width */
+    margin: 1.75rem auto; /* Optional: Adjust top/bottom margin */
+  }
+  
+  .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 40px !important;
+  }
+  
+  .btn-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-direction: row;
+  }
+  
+  .btn-group-vertical .btn {
+    width: 26%;
+  }
+  
+  button.btn.btn-warning.btn-sm.edit-btn,
+  button.btn.btn-danger.btn-sm.delete-btn {
+    width: 50% !important;
+  }
+  
+  .dropdown-icon {
+    color: #a50032;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  .dropdown-content input[type="month"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .no-wrap {
+    white-space: nowrap;
+  }
+  .centered-footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .differentiated div {
+    border-bottom: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+    line-height: 2; /* Adjust as necessary for spacing */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .differentiated div:last-child {
+    border-bottom: none;
+  }
+  
+  .differentiated {
+    padding: 0px !important;
+    align-items: center;
+  }
+  
+  .highlight {
+    color: red;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border-right: 1px solid #ddd; 
+  //   border-bottom: 1px solid #ddd;
+    padding: 8px; 
+    vertical-align: middle; 
+  }
+  
+  .table-bordered tbody td[colspan] {
+    padding: 0; 
+  }
+  
+  .table-bordered .row > .col {
+    padding: 0; 
+  //   border-bottom: 1px solid #ddd; 
+    text-align: center;
+  }
+  
+  .table-bordered .edit-button,
+  .table-bordered .delete-button {
+    margin-right: 8px;
+  }
+  
+
+
+  #confirmBoxModel,#alertBoxModel{
+
+    .modal-content,.modal-footer,.modal-header{
+        border:none !important
+    }
+    .modal-dialog{
+        max-width: 450px !important;
+    }
+
+    #confirmBoxModelLabel{
+        font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    }
+    .btn-grey{
+        background-color: #747a80 !important;
+    }
+    .disableW{
+      disbled :true
+    }
+  }
+
+  #alertBoxModel{
+    #alertBoxModelLabel{
+      text-align: center;
+    font-size: 20px !important;
+      
+    }
+    .col-6.px-1{
+      margin:  0 auto !important;
+    }
+}
+
+label{
+  font-family: math !important;
+}

@@ -1,0 +1,409 @@
+<div class="loader" *ngIf="isLoader">
+    <img  src="../../assets/images/LG_loader.gif">
+  </div>
+<div class="px-3">
+    
+    <!-- <div class="row mb-3 lg_font">
+        <div class="col-12 d-flex gap-2 training_tab mt-3">
+            <button routerLink="/training-delivery-report" class="btn btn-danger custom-btn">Training
+                Delivery Report</button>
+            <button routerLink="/sse-training-report" class="btn btn-danger custom-btn">SSE Training
+                Report</button>
+                <button  *ngIf="roleName == 'TRAINEE'" routerLink="/training-delivery-upload" style="width: 22%;" class="btn btn-danger custom-btn">
+                    Training Delivery Data Upload
+               </button>
+        </div>
+    </div> -->
+    <hr class="custom-hr">
+    <div class="row justify-content-between mt-3 align-items-center">
+        <h1 class="lg_font"> SSE Training Report </h1>
+
+        <p class="lg_font" style="color: #A50032;">All Fields are mandatory*</p>
+        <div class="col-4">
+            <div class="box mb-0">
+                <div class="box-heading">Select Training Date</div>
+                <div class="form-row align-items-start py-3 px-1">
+
+                    <div class="form-group m-0 col-6 px-1">
+                        <label for="fromDate" class="mb-0">From Date</label>
+                        <div class="input-group input_date_cstm">
+                            <input class="form-control lg_font_label" placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                                [value]="searchModel.startDate" (input)="startDateChange($event)" ngbDatepicker  [maxDate]="currentDate"
+                                #fromDate="ngbDatepicker" (dateSelect)="startDateSelect($event)" />
+                            <button (click)="fromDate.toggle()" type="button"
+                                style="border: none;background-color: transparent;padding: 0;">
+                                <img src="../../assets/images/callendar_icon.svg" alt="">
+
+                            </button>
+                        </div>
+                        <ng-template #dayTemplate let-date="date" let-currentMonth="currentMonth">
+                            <span [ngClass]="getDayClass(date)">
+                              {{ date.day }}
+                            </span>
+                          </ng-template>  
+                        <label *ngIf="isSubmitted && (searchModel.startDate == null ||searchModel.startDate == '' ) && isStartDateValid" class="error">Required</label>
+                        <label *ngIf="isSubmitted && !isStartDateValid" class="error">Select a valid date</label>
+                    </div>
+                    <div class="form-group m-0 col-6 px-1">
+
+                        <label for="toDate" class=" mb-0">To Date</label>
+                        <!-- <input type="date" id="toDate" [(ngModel)]="searchModel.endDate" class="form-control mb-0"
+                            placeholder="To Date">
+                        <label *ngIf="isSubmitted && (searchModel.endDate == null ||searchModel.endDate == '')"
+                            class="error">Required</label> -->
+                            <div class="input-group input_date_cstm">
+                                <input class="form-control lg_font_label"  placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                                    [value]="searchModel.endDate" (input)="endDateChange($event)" ngbDatepicker
+                                    #toDate="ngbDatepicker" (dateSelect)="endDateSelect($event)" [minDate] = minDate [maxDate]="currentDate"/>
+                                <button (click)="toDate.toggle()" type="button"
+                                    style="border: none;background-color: transparent;padding: 0;">
+                                    <img src="../../assets/images/callendar_icon.svg" alt="">
+
+                                </button>
+                            </div>
+                            <ng-template #dayTemplate let-date="date" let-currentMonth="currentMonth">
+                                <span [ngClass]="getDayClass(date)">
+                                  {{ date.day }}
+                                </span>
+                              </ng-template>  
+                            <!-- <hr /> -->
+                            <label *ngIf="isSubmitted && (searchModel.endDate == null ||searchModel.endDate == '' ) " class="error">Required</label>
+                            <label *ngIf="isSubmitted && !isEndDateValid" class="error">Select a valid date</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Content-->
+    <div>
+
+        <br />
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Trained audience</div>
+                        <div class="form-group">
+                            <ng-select class="lg_font_label" [(ngModel)]="selectedTrainedAudience" (change)="trainedAudienceChange(selectedTrainedAudience)">
+                                <ng-option [value]="0">All Trained audience</ng-option>
+                                <ng-option [value]="1">Enter SSE Id:</ng-option>
+                            </ng-select>
+
+                            <div class="py-3">
+                                <input *ngIf="selectedTrainedAudience==1" onlyNumber maxlength="7"
+                                    (keyup)="getDataBySSEId(selectedSSEId)" [(ngModel)]="selectedSSEId" type="text"
+                                    class="mx-auto d-block">
+                                <label class="error"
+                                    *ngIf="sseIdChanged && dataBySSEId.length==0 && selectedTrainedAudience == 1">No SSE
+                                    Id Found </label>
+                                <label *ngIf="(isSubmitted && selectedTrainedAudience==1 && 
+                                        (selectedSSEId=='' ||selectedSSEId == null ||selectedSSEId == undefined))
+                                        ||(isSubmitted && selectedTrainedAudience==null)"
+                                    class="error">Required</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Branch</div>
+                        <div class="form-group">
+
+                            <ng-select [(ngModel)]="selectedBranch" [multiple]="true" class="lg_font_label"
+                                (change)="branchChange(selectedBranch)">
+                                <ng-option [value]="0">All Branches</ng-option>
+                                <ng-option *ngFor="let item of branches"
+                                    [value]="item.BRANCHNAME">{{item.BRANCHCODE}}</ng-option>
+                            </ng-select>
+                            <label *ngIf="isSubmitted && (selectedBranch?.length==0 || selectedBranch==undefined)"
+                                class="error">Required</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Training Code</div>
+                        <div class="form-group">
+
+                            <ng-select class="lg_font_label" [(ngModel)]="selectedTrainingCode" [multiple]="true"
+                                (change)="trainingCodeChange(selectedTrainingCode)">
+                                <ng-option [value]="0">All Training Codes</ng-option>
+                                <ng-option *ngFor="let item of trainingCodes"
+                                    [value]="item.TRAINING_CODE">{{item.TRAINING_CODE}}</ng-option>
+                            </ng-select>
+                            <label class="error" *ngIf="isSubmitted && (selectedTrainingCode ==
+                                         undefined ||selectedTrainingCode?.length==0)">Required</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Trained By</div>
+                        <div class="form-group">
+
+                            <ng-select [(ngModel)]="selectedTrainer" [multiple]="true" class="lg_font_label"
+                                (change)="trainedByChange(selectedTrainer)">
+                                <ng-option [value]="0">All Trainers</ng-option>
+                                <ng-option *ngFor="let item of Trainers" [value]="item.USEREMPID">{{item.USERNAME}} -
+                                    {{item.USEREMPID}}</ng-option>
+                            </ng-select>
+                            <label class="error" *ngIf="isSubmitted && 
+                                        (selectedTrainer==undefined || selectedTrainer?.length==0)">Required</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- </div>
+                        <div class="form-row"> -->
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Date of joining</div>
+                        <div class="form-group">
+
+                            <ng-select [(ngModel)]="dateOfJoiningType" class="lg_font_label">
+                                <ng-option [value]="0">
+                                    All
+                                </ng-option>
+                                <ng-option [value]="1">Select Date</ng-option>
+                            </ng-select>
+                            <div *ngIf="dateOfJoiningType==1" class="d-flex mt-4 pb-3 align-items-start">
+                                <div class="form-row flex-column col-6 align-items-start px-1">
+                                    <label for="pcgList" class="col-md-2 d-block mb-0">From</label>
+                                        <div class="input-group input_date_cstm">
+                                            <input class="form-control px-1" placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                                                [value]="searchModel.startDoj" (input)="startDojChange($event)" ngbDatepicker  [maxDate]="currentDate"
+                                                #startDoj="ngbDatepicker" (dateSelect)="startDojSelect($event)" />
+                                            <button (click)="startDoj.toggle()" type="button"
+                                                style="border: none;background-color: transparent;padding: 0;">
+                                                <img src="../../assets/images/callendar_icon.svg" alt="">
+
+                                            </button>
+                                        </div>
+                                        <ng-template #dayTemplate let-date="date" let-currentMonth="currentMonth">
+                                            <span [ngClass]="getDayClass(date)">
+                                              {{ date.day }}
+                                            </span>
+                                          </ng-template>  
+                                        <label *ngIf="isSubmitted && (searchModel.startDoj == null ||searchModel.startDoj == '' ) && isStartDojValid" class="error">Required</label>
+                                        <label *ngIf="isSubmitted && !isStartDojValid" class="error">Select a valid date</label>
+                                </div>
+                                <div class="form-row flex-column col-6 align-items-start px-1">
+                                    <label for="pcgList" class="col-md-2 d-block mb-0">To</label>
+                                    <!-- <input type="date" [(ngModel)]="searchModel.endDoj" class="form-control">
+                                    <label *ngIf="isSubmitted && searchModel.endDoj==''" class="error">Required</label> -->
+                                    <div class="input-group input_date_cstm">
+                                        <input class="form-control px-1" placeholder="dd-mm-yyyy" name="dp" [dayTemplate]="dayTemplate"
+                                            [value]="searchModel.endDoj" (input)="endDojChange($event)" ngbDatepicker [minDate]="minDOJ"
+                                            [maxDate]="currentDate" #endDoj="ngbDatepicker" (dateSelect)="endDojSelect($event)" />
+                                        <button (click)="endDoj.toggle()" type="button"
+                                            style="border: none;background-color: transparent;padding: 0;">
+                                            <img src="../../assets/images/callendar_icon.svg" alt="">
+                                        
+                                        </button>
+                                    </div>
+                                    <ng-template #dayTemplate let-date="date" let-currentMonth="currentMonth">
+                                        <span [ngClass]="getDayClass(date)">
+                                          {{ date.day }}
+                                        </span>
+                                      </ng-template>  
+                                    <label *ngIf="isSubmitted && (searchModel.endDoj == null ||searchModel.endDoj == '' ) && isEndDojValid" class="error">Required</label>
+                                    <label *ngIf="isSubmitted && !isEndDojValid" class="error">Select a valid date</label>
+                                </div>
+                            </div>
+                            <label class="error" *ngIf="isSubmitted && dateOfJoiningType==null">Required</label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">PCG List</div>
+                        <div class="form-group">
+
+                            <ng-select [(ngModel)]="selectedPGC" [multiple]="true" (change)="pgcChange(selectedPGC)" class="lg_font_label">
+                                <ng-option [value]="0">All PCG</ng-option>
+                                <ng-option *ngFor="let item of PCGList"
+                                    [value]="item.PCGlist">{{item.PCGlist}}</ng-option>
+                            </ng-select>
+                            <label class="error"
+                                *ngIf="isSubmitted && (selectedPGC==undefined||selectedPGC==null)">Required</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Current Status</div>
+                        <div class="report-container">
+                            <div class="col-4 report-options border-0 shadow-none">
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedCurrentStatus" value="2" class="form-check-input"
+                                        type="radio" name="selectedCurrentStatus" id="all">
+                                    <label class="form-check-label" for="all">All</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedCurrentStatus" value="0" class="form-check-input"
+                                        type="radio" name="selectedCurrentStatus" id="Active">
+                                    <label class="form-check-label" for="Active">Active</label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedCurrentStatus" value="1" class="form-check-input"
+                                        type="radio" name="selectedCurrentStatus" id="Inactive">
+                                    <label class="form-check-label" for="Inactive">Inactive</label>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <label *ngIf="isSubmitted && (selectedCurrentStatus==null||selectedCurrentStatus==3)" class="error">Required</label>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Count Type</div>
+                        <div class="report-container">
+                            <div class="col-4 report-options border-0 shadow-none">
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedCountType" value="0" class="form-check-input"
+                                        type="radio" name="selectedCountType" id="all">
+                                    <label class="form-check-label" for="all">All</label>
+                                </div>
+
+                                <div class="form-check" *ngFor="let item of CountTypes">
+                                    <input [(ngModel)]="selectedCountType" [value]="item.name" class="form-check-input"
+                                        type="radio" name="selectedCountType" [id]="item.name">
+                                    <label class="form-check-label" [for]="item.name">{{item.name}}</label>
+                                </div>
+
+                                <!-- <label *ngIf="isSubmitted && selectedCountType == null" class="error">Required</label> -->
+
+
+
+                            </div>
+
+
+                        </div>
+                        <label class="error" *ngIf="isSubmitted && (selectedCountType==null||selectedCountType==2)"> Required</label>
+                        <br>
+                    </div>
+                </div>
+
+
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Select Territory</div>
+                        <div class="report-container">
+                            <div class="col-4 report-options border-0 shadow-none">
+
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedTerritory" value="Zone" class="form-check-input"
+                                        type="radio" name="location" id="zone">
+                                    <label class="form-check-label" for="zone">Zone</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedTerritory" value="Region" class="form-check-input"
+                                        type="radio" name="location" id="region">
+                                    <label class="form-check-label" for="region">Region</label>
+                                </div>
+                                <div class="form-check">
+                                    <input [(ngModel)]="selectedTerritory" value="Branch" class="form-check-input"
+                                        type="radio" name="location" id="branch">
+                                    <label class="form-check-label" for="branch">Branch</label>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <label class="error" *ngIf="isSubmitted && selectedTerritory==''"> Required</label>
+                        <br>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- <div class="button-container">
+                            <button type="button" class="btn">Download Report</button>
+                        </div> -->
+            <div class="mb-5 mt-3">
+
+                <div class=" col-6 report-buttons ms-auto flex">
+                    <div class="col-6 px-1"> <button *ngIf="selectedTrainedAudience!=1" type="button"
+                            (click)="redirectToDashboard()" class="btn btn-custom-red">View Dashboard</button></div>
+                    <div class="col-6 px-1"> <button type="button" (click)="downloadReport()"
+                            class="btn btn-custom-red">Download Report</button></div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- end page title -->
+        <!-- end Row -->
+
+    </div> <!-- container -->
+
+</div> <!-- content -->
+
+
+
+<button class="btn btn-primary py-2 w-auto"  style="display: none;"
+data-target="#alertBoxModel" data-bs-toggle="modal" data-bs-target="#alertBoxModel" #alert>
+                                        </button>
+<div class="modal fade" id="alertBoxModel" tabindex="-1" aria-labelledby="alertBoxModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h5  id="alertBoxModelLabel">{{alertMessage}}</h5>
+                               
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row mx-auto" style="max-width: 250px;">
+                                <!-- <div class="col-6 px-1">
+                                    <button type="button" (click)="deletePJPEvent(toBeDeletedId)"
+                                        class="btn btn-danger">Yes</button>
+
+                                </div> -->
+                                <div class="col-6 px-1"> <button  type="button" class="btn btn-danger w-100"
+                                        data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                                </div>
+                            
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+              
+            </div>
+        
+        </div>
+    </div>
+</div>

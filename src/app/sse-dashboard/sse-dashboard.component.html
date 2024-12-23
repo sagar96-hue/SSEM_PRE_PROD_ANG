@@ -1,0 +1,290 @@
+<div class="loader" *ngIf="isLoader">
+    <img src="../../assets/images/LG_loader.gif">
+</div>
+<div class="px-3 lg_font_label">
+
+    <div class=" mt-4">
+        <div class="">
+            <div>
+
+            </div>
+
+            <div class="row align-item-start mb-5">
+                <div class="col-6">
+                    <h1 class=" col-12 h2 font-bold mb-0 lg_font_label">SSE Training Dashboard</h1>
+                </div>
+
+
+                <div class="col-6" *ngIf="roleName == 'ADMIN'">
+                    <button type="button" class="btn btn-primary ms-auto lg_font_label" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Send Email
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title lg_font_label" id="exampleModalLabel">Mail</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close">X</button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="modal-content ">
+                                <div class="modal-header row">
+                                    <div class="col-md-8">
+                                        <div class="form-group mx-0">
+                                            <label class="px-1 lg_font_label" for="cc">To</label>
+                                            <input type="text" [disabled]="true" [(ngModel)]="To"
+                                                class="form-control mx-0" id="cc" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-4">
+                                        <label class="px-2 lg_font_label">Select Template</label>
+                                        <select [(ngModel)]="templateHtml" (change)="templateChange()"
+                                            class="form-select form-control mb-2 lg_font_label"
+                                            aria-label="Default select example">
+                                            <option *ngFor="let item of emailTemplates" [value]="item.Content">
+                                                {{item.FileName}}</option>
+
+                                        </select>
+                                        <label *ngIf="templateHtml=='' && isSubmitted"
+                                            class="error lg_font_label">Required</label>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="row">
+
+                                        <div class="col-md-12 ">
+                                            <div class="">
+                                                <label class="px-1 lg_font_label" for="bcc">CC</label>
+
+                                                <ng-select [multiple]="true" [(ngModel)]="CC" class="test lg_font_label"
+                                                    style="padding: 1px;
+    border: 1px solid rgb(233, 237, 243);border-radius: 6px;">
+                                                    <ng-option class="form-select form-control mb-2"
+                                                        [value]="item.emailID"
+                                                        *ngFor="let item of userList">{{item.emailID}}</ng-option>
+                                                </ng-select>
+                                                <!-- <label class="error" *ngIf="isSubmitted && (CC==undefined || CC?.length==0)">Required</label> -->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group mx-0 mt-3 lg_font_label">
+                                        <label class="px-1 " for="subject">Subject</label>
+                                        <input type="text" [(ngModel)]="subject" class="form-control mx-0" id="subject"
+                                            placeholder="">
+                                        <label class="error" *ngIf="subject=='' && isSubmitted">Required</label>
+                                    </div>
+                                    <div class="form-group mx-0 mt-3">
+                                        <label class="px-1" for="content">Content</label>
+
+                                        <st-editor [(ngModel)]="content" [config]="config"></st-editor>
+
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" #cancel
+                                        aria-label="Close">Cancel</button>
+                                    <button type="button" (click)="sendEmail()" class="btn btn-danger">Send</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class=" cont-2 mb-3 mt-4">
+
+        <form>
+            <!-- start page title -->
+            <div class="form-row mb-3" style="align-items:start;justify-content: start;">
+
+                <div class="form-group col" style="max-width: max-content; padding: 0 20px 0 0;">
+                    <label for="toDate" class="mb-0" style="font-weight: 400;"><b>Date Duration of Training Records
+                        </b><span style=" display: block;
+                        background: #f1f1f1 !important;
+                        max-width: max-content;
+                        padding: 4px 15px;
+                        border-radius: 00px;
+                        font-size: 14px !important;
+                        color: black;
+                        border: 1px solid #00000014;
+                        margin: 8px 0 0;">
+                            {{FromDate}} <b>to</b> {{ToDate}}
+                        </span></label>
+
+                </div>
+
+                <div class="form-group col" style="max-width: max-content; padding: 0 20px;">
+                    <label for="territory" class="mb-0" style="font-weight: 400;"><b>Selected Territory </b>
+                        <span style=" display: block;
+                        background: #f1f1f1 !important;
+                        max-width: max-content;
+                        padding: 4px 15px;
+                        border-radius: 00px;
+                        font-size: 14px !important;
+                        color: black;
+                        border: 1px solid #00000014;
+                        margin: 8px 0 0;">{{SelectedTerritory}} </span></label>
+
+                </div>
+                <div class="form-group col" style="max-width: max-content; padding: 0 20px;">
+                    <label for="fromDate" class="mb-0 " style="font-weight: 400;"><b>Selected Training code </b>
+                        <span style=" display: block;
+                        background: #f1f1f1 !important;
+                        max-width: max-content;
+                        padding: 4px 15px;
+                        border-radius: 00px;
+                        font-size: 14px !important;
+                        color: black;
+                        border: 1px solid #00000014;
+                        margin: 8px 0 0;">
+                            {{TrainingCode==0?'All':TrainingCode}} </span></label>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-container mt-3">
+
+
+        <div style="display:flex;border-left: 1px solid white;">
+            <div class="col-2 text-center"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                Zone</div>
+            <div class="col-2 text-center" *ngIf="SelectedTerritory!='Zone'"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                Region</div>
+            <div class="col-2 text-center" *ngIf="SelectedTerritory!='Zone' && SelectedTerritory!='Region'"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                Branch</div>
+            <div class="col-2 text-center"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                Training Completed</div>
+            <div class="col-2 text-center"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                Training Pending</div>
+            <div class="col-2 text-center"
+                style=" max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                To be Trained</div>
+        </div>
+        <div *ngFor="let item of sortedData" style=" display: flex;;border-left: 1px solid rgb(198, 203, 211); 
+     ">
+            <div class="col-2"  style=" margin: 0; 
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;"> {{item.ZoneName}}</div>
+            <div class="  col-10 px-0">
+                <div style="display: flex;" *ngFor="let item1 of item?.Data">
+                    <div class="col-2" *ngIf="SelectedTerritory!='Zone'" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;">
+                        {{item1.RegionName}}
+                    </div>
+                    <div class="col-10 px-0">
+
+                        <div style="display: flex;width: 100%;" *ngFor="let item2 of item1.Data">
+                            <p class="col-3" *ngIf="SelectedTerritory!='Zone' && SelectedTerritory!='Region'" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;"> {{item2.Branch}} </p>
+                            <p class="col-3 text-center justify-content-center" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;">{{item2.TrainingCompleted}}</p>
+                            <p class="col-3  text-center justify-content-center" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;">{{item2.TrainingPending}}</p>
+                            <p class="col-3 text-center justify-content-center" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;">{{item2.TotalToBeTrained}}</p>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <nav>
+            <ul class="pagination" id="pagination">
+            </ul>
+        </nav>
+    </div>
+    <div class="row mb-5 justify-content-end">
+        <div class="col-3">
+            <button *ngIf="trainedList.length>0" type="button" (click)="exportToExcel(pendingList)"
+                class="btn btn-custom-red w-100">Download Pending List</button>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+<!-- Footer Start -->
+<footer class="footer">
+    <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <script>document.write(new Date().getFullYear())</script> © Dashtrap
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end">
+                    <p class="mb-0">Design & Develop by <a href="https://myrathemes.com/" target="_blank">Zouma</a> </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</footer>

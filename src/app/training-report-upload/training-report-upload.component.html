@@ -1,0 +1,160 @@
+<div class="loader" *ngIf="isLoader">
+    <img src="../../assets/images/LG_loader.gif">
+</div>
+<div class="px-3">
+<!-- 
+    <div class="row lg_font">
+        <div class="col-12 d-flex gap-2 training_tab mb-3  mt-3">
+            <button routerLink="/training-delivery-report" class="btn btn-danger custom-btn">
+                Training Delivery Report
+            </button>
+            <button routerLink="/sse-training-report" class="btn btn-danger custom-btn">
+                SSE Training Report
+            </button>
+            <button routerLink="/training-delivery-upload" style="width: 22%;" class="btn btn-danger custom-btn">
+                 Training Delivery Data Upload
+            </button>
+
+         
+        </div>
+    </div> -->
+    <hr class="custom-hr" />
+
+
+    <div class="row justify-content-between mt-3 align-items-center lg_font_label">
+
+        <h1 class="lg_font"> Training Delivery Data Upload </h1>
+
+ 
+        
+        <div class="col-12">
+            <div class="box mb-0">
+                <div class="box-heading">Upload File</div>
+                <div class="form-row align-items-start py-3 mb-0 mx-0 px-1">
+                    <div class="form-group col-6 mx-0 px-1">
+                        <!-- <label for="toDate" class="mb-0 lg_font_label">From Date</label> -->
+                        <button style="margin-left: auto;" (click)="downloadFormat()" class="btn btn-danger custom-btn">
+                            Download Format
+                        </button>
+                   
+
+                        <input  type="file" (change)="onFileSelected($event)" accept=".xls, .xlsx"/>
+                        
+                    
+                        <br><br>
+                        <div  class="line-container">
+                            <input type="checkbox" [(ngModel)]="agreeCheck" class="line-item">
+                            <label class="line-item">I have consucted training and post training assessment (online, hard copy,etc.) for
+                                the audience mentioned in training report.</label>
+                        </div>
+                     <label>
+                        If any discrepancy is found in the report, the management can take strict action against me.
+                     </label>
+                     <button (click)="onUpload()" [ngClass]="{ 'disabled': (!agreeCheck || selectedFile==null)}"  class="btn btn-danger custom-btn">
+                        Upload
+                    </button>
+                        <!-- <label *ngIf="isSubmitted && fromDate == undefined" style="color: red">Required</label> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12" style="color: red;">
+            <div class="box mb-0">
+                <div class="box-heading">Important Process</div>
+                <div class="form-row align-items-start py-3 mb-0 mx-0 px-1">
+                    <div class="form-group col-6 mx-0 px-1">
+                       <ul>
+                        <li>Download data Template.</li>
+                        <li>Save file in .xls Format.</li>
+                        <li>Input the data in excel and then upload.</li>
+                        <li>Don't change the header contents.</li>
+                        <li>Please input Date of Training in 'YYYYMMDD' format.(ex. 20190611)</li>
+                        <li>GTM Code column can not be left blank in case designation is Channel Partner.</li>
+                        <li>GTM Code should be a 7 character length containing first 3 character as Alphabets only and last 4 as numeric only.(ex. ABC1111)</li>
+                        <li>Training Medium column should not be left blank and contain value either Classroom or On-Store or Virtual only. Other kind of value is not allowed.</li>
+                       </ul>
+                     
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Content-->
+  
+    <!-- container -->
+</div>
+<!-- content -->
+<!-- Footer Start -->
+<!-- <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            © Dashtrap
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-none d-md-flex gap-4 align-items-center justify-content-md-end">
+            <p class="mb-0">
+              Design & Develop by
+              <a href="https://myrathemes.com/" target="_blank">Zouma</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+
+
+
+<button class="btn btn-primary py-2 w-auto" style="display: none;" data-target="#alertBoxModel" data-bs-toggle="modal"
+    data-bs-target="#alertBoxModel" #alert>
+</button>
+<div class="modal fade" id="alertBoxModel" tabindex="-1" aria-labelledby="alertBoxModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h5 id="alertBoxModelLabel">{{alertMessage}}</h5>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row mx-auto" style="max-width: 250px;">
+                              
+                                <div class="col-6 px-1"> <button type="button" class="btn btn-danger w-100"
+                                        data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

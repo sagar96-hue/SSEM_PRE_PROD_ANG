@@ -1,0 +1,542 @@
+.custom-hr {
+    border: 0;
+    border-top: 2px solid #A50032;
+    margin: 0; /* Adjust the margin as needed */
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 17px;
+}
+
+cont-2 {
+    background: #f1f1f1 !important;
+}
+
+body {
+    background: white;
+}
+
+.container-fluid {
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 55px;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 20px;
+}
+
+    .form-group:last-child {
+        margin-right: 0;
+    }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+input[type="text"], .select2-container--default .select2-selection--single {
+    width: 50%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+
+
+.select2-container--default .select2-results__option {
+    display: flex;
+    align-items: center;
+}
+
+    .select2-container--default .select2-results__option span {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .select2-container--default .select2-results__option input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+.select2 {
+    width: 100%;
+}
+
+.main-menu {
+    background: white
+}
+
+.menu-title {
+    color: black;
+}
+
+.menu-item .menu-link .menu-text {
+    color: black;
+}
+
+/* Red background color when menu is active/open */
+.menu-item.active .menu-link .menu-title {
+    background-color: #e83030;
+}
+
+
+/* Red plus sign styling */
+.menu-plus {
+    color: #dc3545 !important; /* Red color for the plus sign */
+    /* Adjust spacing as needed */
+}
+
+.menu-plus1 {
+    color: #e83030
+}
+
+.app-menu .menu-item .menu-link > .menu-text {
+    padding: 0px !important
+}
+
+.menu-plus .app-menu .menu-item.active > .menu-link {
+    color: var(--bs-menu-item-active-color);
+    background-color: rgb(248 11 11);
+}
+
+.app-menu .menu-item.active > .menu-link {
+    color: white;
+    background-color: #e83030;
+}
+
+.menu-item.active {
+    border: 0px solid #e83030; /* Add your desired border style */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically, if needed */
+    /* Full height of the viewport, optional */
+}
+
+.btn {
+    display: block;
+    padding: 10px;
+    background-color: #A50032 !important;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+ul.sub-menu {
+    background: #80808024;
+}
+
+.box {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-top: 7px solid #A50032; /* Add a red border on top */
+    height: 230px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    background-color: #fff; /* White background for the box */
+}
+
+.col-3 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.box-heading {
+    font-weight: bold;
+    /*margin-bottom: 10px;*/
+    background-color: #A50032; /* Grey background */
+    padding: 10px 10px;
+    text-align: center;
+    th{
+    color: white;
+}
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1px;
+}
+
+.form-group:last-child {
+    margin-right: 20px;
+}
+
+input[type="text"], .select2-container--default .select2-selection--single {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+}
+
+/* .btn-block {
+    width: 100%;
+}*/
+
+.add-btn {
+    color: red;
+    background-color: white; /* Optional: Ensure background is not red */
+    border-color: red; /* Optional: Ensure border color is red to match text */
+}
+
+    .add-btn:hover {
+        background-color: white; /* Optional: Maintain background color on hover */
+    }
+
+.modal-dialog {
+    max-width: 80% !important; /* Change this value to increase/decrease the modal width */
+    margin: 1.75rem auto; /* Optional: Adjust top/bottom margin */
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 40px !important;
+}
+
+.btn-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-direction: row;
+}
+
+.btn-group-vertical .btn {
+    width: 26%;
+}
+
+button.btn.btn-warning.btn-sm.edit-btn, button.btn.btn-danger.btn-sm.delete-btn {
+    width: 50% !important;
+}
+.pagination {
+    justify-content: flex-end;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff!important;
+    background-color: #dc3545!important;
+    border-color: #dc3545!important;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #dc3545!important;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+
+/* MODAL STYLES
+-------------------------------*/
+jw-modal {
+    /* modals are hidden by default */
+    display: none;
+
+    .jw-modal {
+        /* modal container fixed across whole screen */
+        position: fixed;
+        inset: 0;
+
+        /* z-index must be higher than everything else on the page */
+        z-index: 10000;
+        
+        /* semi-transparent black background exposed by padding */
+        background-color: rgba(0, 0, 0, .75);
+        padding: 40px;
+
+        /* enables scrolling for tall modals */
+        overflow: auto;
+    }
+
+    .jw-modal-body {
+        padding: 20px;
+        background: #fff;
+    }
+}
+
+body.jw-modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+    overflow: hidden;
+}
+// new css
+
+modern-popup {
+    border: 1px solid #999;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px #555;
+    width: 800px;
+}
+
+.payload {
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+    text-align: left;
+    /* border: 0.025em solid #C7003B;
+    -webkit-box-shadow: 0 0 147px #333;
+    -moz-box-shadow: 0 0 147px #333;
+    box-shadow: 0 0 147px #333; */
+}
+
+.button {
+    clear: both;
+    margin: 0;
+    vertical-align: text-top;
+    font-family: "BryantLGMedium";
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    border: 0;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+    padding: 8px 22px;
+    background: #d30e43;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c03), color-stop(48%, #e00e47), color-stop(53%, #d30e43), color-stop(100%, #c70e40));
+    background: -webkit-linear-gradient(top, #c03 0, #e00e47 48%, #d30e43 53%, #c70e40 100%);
+    background: -moz-linear-gradient(top, #c03 0, #e00e47 48%, #d30e43 53%, #c70e40 100%);
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+  }
+
+.button.small {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    color: #fff;
+    text-shadow: none;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-top: 5px;
+    padding: 3px 6px;
+  }
+
+.close {
+    float: right;
+    background: url(/assets/Image/lg-global-sprite.png) 0 -174px no-repeat transparent;
+    /* background: url(Images/close.png); */
+    height: 17px;
+    width: 17px;
+    text-indent: -9999px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    margin-right: -4px;
+    margin-top: -4px;
+}
+.title-area {
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+.title-area h3 {
+    background: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 8px 8px 0px 0px;
+    text-transform: capitalize !important;
+    font-size: 14px;
+}
+.clearfix {
+    zoom: 1;
+}
+.title-area {
+    padding-left: 0px;
+}
+
+.sign-area {
+    /* padding-top: 7px; */
+    border-top: 1px solid #ccc;
+    clear: both;
+}
+
+.aform p {
+    margin-bottom: 0;
+}
+.registraion p {
+    font-size: 11px;
+}
+.alignR {
+    text-align: right!important;
+}
+.pad-r-15 {
+    padding-right: 15px !important;
+}
+.button.gray {
+    background: #9a9a9a;
+}
+.button.gray :hover{
+    background: #D30E43;
+}
+.button.small {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #D30E43;
+    text-shadow: none;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-top: 5px;
+    padding: 3px 6px;
+    margin-right: 20px;
+}
+
+
+
+.GridViewStyle {
+    width: 100%;
+    margin-top: 0px;
+}
+
+.GridViewHeaderStyle th {
+    padding: 7px 2px 7px 2px;
+    border-right: 1px solid #fff;
+    background: #D30E43;
+    font-weight: bold;
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+}
+.GridViewRowStyle td {
+    padding: 4px 2px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    background: #E6E6E6;
+    font-size: 11px;
+    vertical-align: middle;
+}
+.center-item {
+    text-align: center;
+}
+.GridViewAlternatingRowStyle td {
+    padding: 4px 2px;
+    background: #E6E6E6;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    font-size: 11px;
+    vertical-align: middle;
+}
+.center-item {
+    text-align: center;
+}
+
+.highlight{
+    color: #d80546 !important;
+}
+
+
+
+#exampleModal{
+
+    .modal-content,.modal-footer,.modal-header{
+        border:none !important
+    }
+ .modal-dialog{
+    max-width: 1020px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+ }
+
+    #confirmBoxModelLabel{
+        font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    }
+    .btn-grey{
+        background-color: #747a80 !important;
+    }
+.modal-dialog > .modal-content >  .modal-header{
+    h5{
+        color: #fff;
+    }
+    button{
+        background-color: white;
+        opacity: 1;
+        border-radius: 50%;
+        background-image: none !important;
+        color: #A50032;
+    line-height: 12px;
+    font-weight: bold;
+    }
+    background: #A50032;
+  }
+  }
+
+ .test > div{
+    border: none !important;
+}
+
+::ng-deep .ng-select .ng-select-container{
+    border: none !important;
+}
+
+ ng-select > div:first-child {
+    background-color: #f0f0f0; /* Example style */
+    padding: 10px;
+}
+
+
+::ng-deep .st-toolbar{
+    margin-bottom: 20px !important;
+}
+
+::ng-deep .st-area{
+    border-top: 1px solid #bdbdbd !important;
+}
+
+// .cstmtable_head{
+//     .col-2{
+//  max-width: 160px;
+//  width: 100%;
+
+//     }
+// }
+// .cstm-Table{
+    
+//     border-left: 1px solid rgba(233, 237, 243); 
+//     border-top: 1px solid rgba(233, 237, 243); 
+//     .col-2,.col-3,p{
+//         margin: 0;
+//         border-right: 1px solid rgba(233, 237, 243); 
+//         border-bottom: 1px solid rgba(233, 237, 243); 
+//         display: flex;
+//         align-items: center;
+//         padding:15px 10px;
+//  max-width: 160px;
+//  width: 100%;
+        
+
+//     }
+// }

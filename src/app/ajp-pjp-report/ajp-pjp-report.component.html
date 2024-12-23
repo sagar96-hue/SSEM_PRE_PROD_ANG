@@ -1,0 +1,290 @@
+<div class="loader" *ngIf="isLoader">
+    <img  src="../../assets/images/LG_loader.gif">
+  </div>
+<div class="px-3 mt-4">
+
+    <h1 class="mt-2 mb-2 col-12 h2 font-bold lg_font"> AJP-PJP Report</h1>
+    <p class="mb-5 lg_font" style="color: #A50032;" >All Fields are mandatory*</p>
+
+    <!-- Start Content-->
+    <div class=" mt-3 lg_font_label">
+
+        <div class="">
+            <div class="row">
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Year</div>
+                        <div class="form-group">
+                            <ng-select [(ngModel)]="year">
+                                <ng-option *ngFor="let item of years" [value]="item">{{item}}
+                                </ng-option>
+                            </ng-select>
+                            <label *ngIf=" year==undefined && isSubmitted" style="color: red;">Required</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="box">
+                        <div class="box-heading">Month</div>
+                        <div class="form-group">
+                            <ng-select [(ngModel)]="month">
+                                <ng-option *ngFor="let item of months" [value]="item.No">{{item.Name}}
+                                </ng-option>
+                            </ng-select>
+                            <label *ngIf=" month==undefined && isSubmitted" style="color: red;">Required</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="roleName=='ADMIN'">
+                    <div class="box">
+                        <div class="box-heading">Region</div>
+                        <div class="form-group">
+                            <ng-select [multiple]="true" [(ngModel)]="regionId" (change)="regionChange(regionId)">
+                                <ng-option [value]="0">All Regions</ng-option>
+                                <ng-option *ngFor="let item of regionList" [value]="item.REGIONNAME">{{item.REGIONNAME}}
+                                </ng-option>
+                            </ng-select>
+                            <label *ngIf="(regionId==undefined || regionId?.length==0 )&& isSubmitted"
+                                style="color: red;">Required</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="roleName=='TRAINEE'">
+                    <div class="box">
+                        <div class="box-heading">Branch</div>
+                        <div class="form-group">
+                            <ng-select [multiple]="true" [(ngModel)]="branchId" (change)="branchChange(branchId)">
+                                <ng-option [value]="0">All Branches</ng-option>
+                                <ng-option *ngFor="let item of BranchList" [value]="item.BRANCHID">{{item.BRANCHCODE}}
+                                </ng-option>
+                            </ng-select>
+                            <label *ngIf="(branchId==undefined || branchId?.length==0 )&& isSubmitted"
+                                style="color: red;">Required</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class=" row mb-3">
+
+
+                <div class="report-container">
+
+                    <div class=" col-12 d-flex justify-content-end report-buttons mt-2">
+                        <button type="button" class="btn btn-custom-red me-2" (click)="getAjpReport()">Download AJP
+                            Report</button>
+                        <button type="button" class="btn btn-custom-red me-2" (click)="viewAjpPjpDashboard()">View
+                            PJP-AJP
+                            Dashboard</button>
+                        <button type="button" (click)="getAJpPjpReport()" class="btn btn-custom-red">Download PJP-AJP
+                            Report</button>
+                    </div>
+                </div>
+            </div>
+            <div class="" style="width:100%;overflow: auto;" *ngIf="modifiedData!=undefined && modifiedData?.length!=0">
+         
+            <div class="divider mb-5 mt-4" style="border: 1px solid rgba(128, 128, 128, 0.204);"></div>
+              <div style="width: 100%;overflow: scroll;">
+                <div class="row mx-0 cstmtable_head" class="row mx-0 cstmtable_head flex-nowrap" style="border-left: 1px solid white;">
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Zone</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Region</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Branch</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Trainer ID</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Trainer Name</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Match Check(true)</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Match Check(false)</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Match Check(leave)</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        Match Check(total)</div>
+                    <div class="col-2 text-center"
+                        style="max-width: 160px;
+ width: 100%;background-color: #A50032;color: white;padding: 12px 5px;border-right: 1px solid white;font-size: 16px;font-weight: 700;">
+                        %Adherence</div>
+                </div>
+                <div class="d-flex cstm-Table  flex-nowrap"  style=" border-left: 1px solid rgb(198, 203, 211); 
+     " *ngFor="let item of modifiedData">
+                    <div class="col-2" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;"> {{item.ZoneName}}</div>
+                    <div class="  col-10 px-0">
+                        <div class="row  mx-0 flex-nowrap" *ngFor="let item1 of item?.Data">
+                            <div class="col-2" style=" margin: 0;
+        border-right: 1px solid rgb(198, 203, 211); 
+        border-bottom: 1px solid rgb(198, 203, 211); 
+        display: flex;
+        align-items: center;
+        padding:15px 10px;
+ max-width: 160px;
+ width: 100%;">
+                                {{item1.RegionName}}
+                            </div>
+                            <div class="col-10 px-0">
+
+                                <div class=" row w-100 mx-0 flex-nowrap" *ngFor="let item2 of item1.Data">
+                                    <p class="col-3 " style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: start;
+                             max-width: 160px;
+                             width: 100%;"> {{item2.BranchCode}} </p>
+                                    <p class="col-3 " style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;"> {{item2.TrainerEmpId}} </p>
+                                    <p class="col-3" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: start;
+                             max-width: 160px;
+                             width: 100%;"> {{item2.TrainerName}} </p>
+                                    <p class="col-3 text-center" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;">{{item2.MatchCheckTrue}}</p>
+                                    <p class="col-3 text-center" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;">{{item2.MatchCheckFalse}}</p>
+                                    <p class="col-3 text-center" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;">{{item2.MatchCheckLeave}}</p>
+                                    <p class="col-3 text-center" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;">{{item2.MatchCheckTotal}}</p>
+                                    <p class="col-3 text-center" style=" margin: 0;
+                                    border-right: 1px solid rgb(198, 203, 211); 
+                                    border-bottom: 1px solid rgb(198, 203, 211); 
+                                    display: flex;
+                                    align-items: center;
+                                    padding:15px 10px;
+                                    justify-content: center;
+                             max-width: 160px;
+                             width: 100%;">{{item2.Adherence}}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<button class="btn btn-primary py-2 w-auto"  style="display: none;"
+data-target="#alertBoxModel" data-bs-toggle="modal" data-bs-target="#alertBoxModel" #alert>
+                                        </button>
+<div class="modal fade" id="alertBoxModel" tabindex="-1" aria-labelledby="alertBoxModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h5  id="alertBoxModelLabel">{{alertMessage}}</h5>
+                               
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row mx-auto" style="max-width: 250px;">
+                                <!-- <div class="col-6 px-1">
+                                    <button type="button" (click)="deletePJPEvent(toBeDeletedId)"
+                                        class="btn btn-danger">Yes</button>
+
+                                </div> -->
+                                <div class="col-6 px-1"> <button  type="button" class="btn btn-danger w-100"
+                                        data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                                </div>
+                            
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+              
+            </div>
+        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,473 @@
+<div class="loader" *ngIf="isLoader">
+    <img  src="../../assets/images/LG_loader.gif">
+  </div>
+<div class="px-3 mt-4 lg_font_label">
+
+    <!-- <img *ngIf="isLoader" src="../../assets/images/LG_loader.gif"> -->
+    <div class="col-12 justify-content-between mt-3 align-items-start">
+        <h1 class="mt-2 mb-5 h2 font-bold lg_font_label" style="font-size: x-large;">PJP (Pre Journey Plan)</h1>
+        
+
+        <div class=" col-7 d-flex align-items-end justify-content-end no-wrap mt-2">
+           <div class="col-4 me-3 position-relative">
+            <label for="monthDropdown" class="mt-2">
+                <h5 class="lg_font_label">Select Month and Year</h5>
+            </label>
+            
+            <select id="monthDropdown" class="form-control me-2 h-100 position-relative" [(ngModel)]="selectedDateObj"
+                (change)="dateChange(selectedDateObj)" style="border: 1px solid rgba(128, 128, 128, 0.556);padding: 9px;background-color: transparent;z-index: 2;">
+                
+                <option *ngFor="let item of dropdownDates" [value]="item.id" class="my-2 d-block py-2" >{{item.date}}</option>
+
+            </select>
+            
+            <svg _ngcontent-yow-c69="" xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24" class="position-absolute" style="right: 12px;bottom: 12px;"><g _ngcontent-yow-c69="" fill="none"><path _ngcontent-yow-c69="" stroke="#a50032" stroke-width="1.5" d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12v2c0 3.771 0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14z"></path><path _ngcontent-yow-c69="" stroke="#a50032" stroke-linecap="round" stroke-width="1.5" d="M7 4V2.5M17 4V2.5M2.5 9h19"></path><path _ngcontent-yow-c69="" fill="#a50032" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"></path></g></svg>
+           </div>
+            <div class="">
+                <button class="btn btn-danger custom-btn" routerLink="/pjp-report">View Uploaded PJP
+                    Report</button>
+            </div>
+        </div>
+ 
+
+
+    </div>
+    <!-- Start Content-->
+    <div class="mt-3 lg_font_label">
+        <div class=" table-container mt-3">
+
+
+
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr class="box-heading">
+                        <th style="width: 10%;">Date</th>
+                        <th>Day</th>
+                        <th>New PJP Event</th>
+                        <th>Training Medium</th>
+                        <th>Training Code</th>
+                        <th>Audience</th>
+                        <th>Expected Audience Count</th>
+                        <th> Actions </th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" *ngFor="let item of daysArr" [ngClass]="{'highlight':item.isHighLighted}">
+                    <tr>
+                        <td class="text-center py-2" [ngClass]="{'highlight':item.isHighLighted}">{{item.date}}</td>
+                        <td class="text-center py-2">{{item.day}}</td>
+                        <td class="text-center py-2 center-button">
+
+                          <button type="button" class="btn btn-primary mx-auto py-2"  [disabled]="isDisableByWDay" style="font-size: 16px;
+                            width: 86.8px;
+                            line-height: 18px;
+                        " data-toggle="modal"
+                                (click)="showNewPjpEvent(item)" data-target="#exampleModal" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Add +</button>
+                        </td>
+                        <td colspan="5" class="py-2">
+                            <ng-container *ngFor="let item2 of pJPReport">
+                                <div class="row mx-0 mb-1" *ngIf="item.date == item2.ModifiedDate">
+                                    <div class="col">
+                                        <div>{{item2.TrainingMediumName}}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div>{{item2.TrainingCodeName}}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div>{{item2.TrainingAudienceName}}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div>{{item2.EXPECTED_AUDIENCE_COUNT}}</div>
+                                    </div>
+                                    <div class="col text-end d-flex justify-content-end me-2">
+                                        <button data-target="#exampleModal" data-bs-toggle="modal" [disabled]="isDisableByWDay"
+                                            (click)="bindCreatePJPEvent(item2,item)" data-bs-target="#exampleModal"
+                                            class="btn btn-primary me-1 py-2  w-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1"/><path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3zM16 5l3 3"/></g></svg></button>
+<!--                         
+                                            <button type="button" class="btn btn-primary mx-auto py-2" style="font-size: 16px;
+                                            width: 86.8px;
+                                            line-height: 18px;
+                                        " data-toggle="modal"
+                                                (click)="showNewPjpEvent(item)" data-target="#exampleModal" data-bs-toggle="modal"
+                                                 (click)="deletePJPEvent(item2.PJP_ID)"
+                                                data-bs-target="#exampleModal"></button> -->
+                                       
+                                            <button class="btn btn-primary py-2 w-auto" (click)="setIdForDelete(item2.PJP_ID)" [disabled]="isDisableByWDay"
+                                            data-target="#confirmBoxModel" data-bs-toggle="modal" data-bs-target="#confirmBoxModel"
+                                           ><svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zM9 17h2V8H9zm4 0h2V8h-2zM7 6v13z"/></svg></button>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- end page title -->
+    <!-- end Row -->
+
+    <div class=" ms-auto col-3 px-0" >
+        <button class="btn btn-danger custom-btn col-3" *ngIf="daysArr?.length>0"  (click)="exportToExcel()">Download Current Month PJP</button>
+    </div>
+
+</div> <!-- container -->
+<div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="tableModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tableModalLabel">PJP List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Month & Year</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Traning Medium</th>
+                            <th scope="col">Training Code</th>
+                            <th scope="col"> Training Audience</th>
+                            <th scope="col">Expected Audience Count</th>
+                            <th scope="col">Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JAN,2024</td>
+                            <td>24-06-2024</td>
+                            <td>Monday</td>
+                            <td>On-Screen</td>
+                            <td>TV NPI 2024</td>
+                            <td>SSE</td>
+                            <td>30</td>
+                            <td class=" d-flex justify-content-center">
+                                <button type="button" style=" width: 31%;" class="btn btn-warning btn-sm edit-btn"
+                                    data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="showAlert()"><i
+                                        class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>JAN,2024</td>
+                            <td>24-06-2024</td>
+                            <td>Monday</td>
+                            <td>Virtual</td>
+                            <td>WPR NPI 2024</td>
+                            <td>Channel Partner</td>
+                            <td>20</td>
+                            <td class=" d-flex justify-content-center">
+                                <button type="button" class="btn btn-warning btn-sm edit-btn" data-toggle="modal"
+                                    data-target="#editModal"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="showAlert()"><i
+                                        class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>JAN,2024</td>
+                            <td>24-06-2024</td>
+                            <td>Monday</td>
+                            <td>Classroom</td>
+                            <td>TV NPI 2024</td>
+                            <td>Branch Staff</td>
+                            <td>60</td>
+                            <td class=" d-flex justify-content-center">
+                                <button type="button" class="btn btn-warning btn-sm edit-btn" data-toggle="modal"
+                                    data-target="#editModal"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-sm delete-btn" onclick="showAlert()"><i
+                                        class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<!-- <footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <script>document.write(new Date().getFullYear())</script> © Dashtrap
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end">
+                    <p class="mb-0">Design & Develop by <a href="https://myrathemes.com/" target="_blank">Zouma</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> -->
+<!-- end Footer -->
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New PJP Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="box">
+                                        <div class="box-heading">Month & Year</div>
+                                        <div class="form-group mt-3">
+
+                                            <label class="form-control">{{pjpEventModel.MonthAndYear}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="box">
+                                        <div class="box-heading">Date</div>
+                                        <div class="form-group mt-3">
+                                            <input disabled type="date" [(ngModel)]="pjpEventModel.Date" id="count"
+                                                name="count" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="box">
+                                        <div class="box-heading">Day </div>
+                                        <div class="form-group mt-3">
+                                            <!-- <input type="text" id="count" name="count" class="form-control"> -->
+                                            <label class="form-control">{{pjpEventModel.Day}}</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="box">
+                                        <div class="box-heading">Training Medium</div>
+                                        <div class="form-group mt-3">
+                                            <select  class="select2-single form-control lg_font_label"
+                                                [(ngModel)]="pjpEventModel.TrainingMedium">
+                                                <option *ngFor="let item of trainingMediums"
+                                                    [value]="item.TRAINING_MEDIUM_ID">
+                                                    {{capitalizeFirstLetter(item.TRAINING_MEDIUM_NAME)}}</option>
+                                                    <!-- <option [value]="2">CLASSROOM</option>
+                                                    <option [value]="3">ON-STORE  </option>
+                                                    <option [value]="1">VIRTUAL</option> -->
+                                            </select>
+                                            <label *ngIf="pjpEventModel.TrainingMedium=='' && isSubmitted"
+                                                style="color: red;">Required</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="box">
+                                        <div class="box-heading">Training Code</div>
+                                        <div class="form-group mt-3">
+                                            <select class="select2-single form-control  lg_font_label"
+                                                [(ngModel)]="pjpEventModel.TrainingCode">
+                                                <option *ngFor="let item of trainingCodes"
+                                                    [value]="item.TRAINING_CODE_ID">{{item.TRAINING_CODE}}</option>
+                                            </select>
+                                            <label *ngIf="pjpEventModel.TrainingCode=='' && isSubmitted"
+                                                style="color: red;">Required</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="box">
+                                        <div class="box-heading">
+                                            Training Audience
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <select id="audience" name="audience" class="select2-single form-control lg_font_label"
+                                                [(ngModel)]="pjpEventModel.TrainingAudience">
+                                                <option *ngFor="let item of trainingAudience"
+                                                    [value]="item.TRAINING_AUDIENCE_ID">{{item.TRAINING_AUDIENCE_NAME}}
+                                                </option>
+                                                <!-- <option [value]="3">BRANCH STAFF</option>
+                                                <option [value]="2">CHANNEL PARTNER  </option>
+                                                <option [value]="1">SSE</option> -->
+
+                                            </select>
+                                            <label *ngIf="pjpEventModel.TrainingAudience == '' && isSubmitted"
+                                                style="color: red;">Required</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="box">
+                                        <div class="box-heading">Expected Audience Count</div>
+                                        <div class="form-group mt-3">
+                                            <!-- <input type="number" onlyNumber [(ngModel)]="pjpEventModel.ExpectedAudienceCount"
+                                                id="count" name="count" class="form-control" maxlength="2" minlength="1"> -->
+                                                <input type="text" onlyNumber class="form-control"[(ngModel)]="pjpEventModel.ExpectedAudienceCount"
+                                                 maxlength="3">
+                                            <label *ngIf="(pjpEventModel.ExpectedAudienceCount==null || pjpEventModel.ExpectedAudienceCount==0) && isSubmitted"
+                                                style="color: red;">Required</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" (click)="SavePjpEvent()"
+                                        class="btn btn-danger">{{pjpEventModel.Id==0?'Save':'Update'}}</button>
+
+                                </div>
+                                <div class="col-6"> <button
+                                     #cancel type="button" class="btn btn-danger"
+                                        data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!--<button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="button" class="btn btn-danger">Save</button> -->
+                    </div>
+                </div>
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+            <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmBoxModel" tabindex="-1" aria-labelledby="confirmBoxModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h5  id="confirmBoxModelLabel">Are you Sure to Delete</h5>
+                                <!-- <div class="col-3">
+                                    <div class="box">
+                                      <button (click)="deletePJPEvent(toBeDeletedId)" class="btn btn-success">Yes</button>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="box">
+                                        <button  class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">No</button>
+                                    </div>
+                                </div> -->
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row mx-auto" style="max-width: 250px;">
+                                <div class="col-6 px-1">
+                                    <button type="button" (click)="deletePJPEvent(toBeDeletedId)"
+                                        class="btn btn-danger">Yes</button>
+
+                                </div>
+                                <div class="col-6 px-1"> <button #cancel1 type="button" class="btn btn-danger"
+                                        data-bs-dismiss="modal" aria-label="Close">No</button>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <!--<button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="button" class="btn btn-danger">Save</button> -->
+                    </div>
+                </div>
+                <!-- </div> -->
+                <!-- </div> -->
+            </div>
+            <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary py-2 w-auto"  style="display: none;"
+data-target="#alertBoxModel" data-bs-toggle="modal" data-bs-target="#alertBoxModel" #alert>
+                                        </button>
+<div class="modal fade" id="alertBoxModel" tabindex="-1" aria-labelledby="alertBoxModelLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal-content">
+
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <h5  id="alertBoxModelLabel">{{alertMessage}}</h5>
+                               
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row mx-auto" style="max-width: 250px;">
+                                <!-- <div class="col-6 px-1">
+                                    <button type="button" (click)="deletePJPEvent(toBeDeletedId)"
+                                        class="btn btn-danger">Yes</button>
+
+                                </div> -->
+                                <div class="col-6 px-1"> <button  type="button" class="btn btn-danger"
+                                        data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                                </div>
+                            
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+              
+            </div>
+        
+        </div>
+    </div>
+</div>
+
